@@ -9,7 +9,10 @@ const NavLink = styled(Link)`
 
 const NavBar = () => {
   return(
-    <nav>
+    <nav css={css`
+      display: flex;
+      
+    `}>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/order/">Order</NavLink>
       <NavLink to="/about/">About</NavLink>
