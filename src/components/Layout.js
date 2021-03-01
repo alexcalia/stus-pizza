@@ -35,6 +35,12 @@ const Layout = ({children}) =>
     <meta name="description" content="Stu's Mail-Order Pizza" />
   </Helmet>
   <Header />
-  <main>{children}</main>
+  <main
+    css={css`
+      max-width: 1520px;
+      margin: 0 auto;
+      padding: 0 20px;
+    `}
+  >{children}</main>
 </>
 export default Layout
