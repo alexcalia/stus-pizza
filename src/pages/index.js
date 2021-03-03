@@ -3,6 +3,11 @@ import Layout from '../components/Layout';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+
+const HeroSection = styled('section')`
+  display: flex;
+`;
 
 // markup
 const IndexPage = () => {
@@ -21,14 +26,16 @@ const IndexPage = () => {
   return (
     <>
       <Layout>
-        <Image
-          css={css`
-            height: 500px;
-            width: 500px;
-          `}
-          fluid={heroPizza.sharp.fluid}
-        />
-        <p>This is the home page</p>
+        <HeroSection>
+          <Image
+            css={css`
+              height: 500px;
+              width: 500px;
+            `}
+            fluid={heroPizza.sharp.fluid}
+          />
+          <p>This is the home page</p>
+        </HeroSection>
       </Layout>
     </>
   );
