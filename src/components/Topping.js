@@ -5,17 +5,21 @@ const ToppingBox = styled('div')`
   height: 100px;
   width: ${(props) => (props.active ? '400px' : '150px')};
   background: red;
-  padding-top: 15px;
   margin: 10px;
   font-size: 20px;
   text-align: center;
 `;
 
-const AmountBox = styled('div')``;
+const AmountBox = styled('div')`
+  display: flex;
+  height: 30px;
+`;
 
-const Topping = ({ name, amount, addAmount, removeAmount, active }) => {
+const Topping = ({ name, amount, addAmount, removeAmount }) => {
+  const [active, setActive] = useState(false);
+
   return (
-    <ToppingBox>
+    <ToppingBox onClick={() => setActive(!active)}>
       <p>{name}</p>
       {active && (
         <AmountBox>
