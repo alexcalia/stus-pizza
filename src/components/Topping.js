@@ -15,7 +15,7 @@ const AmountBox = styled('div')`
   height: 30px;
 `;
 
-const Topping = ({ name, amount, addAmount, removeAmount }) => {
+const Topping = ({ name, amount, addAmount, removeAmount, index }) => {
   const [active, setActive] = useState(false);
 
   return (
@@ -23,9 +23,23 @@ const Topping = ({ name, amount, addAmount, removeAmount }) => {
       <p>{name}</p>
       {active && (
         <AmountBox>
-          <button onClick={() => removeAmount(name)}>-</button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              removeAmount(index);
+            }}
+          >
+            -
+          </button>
           <p>{amount}</p>
-          <button onClick={() => addAmount(name)}>+</button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              addAmount(index);
+            }}
+          >
+            +
+          </button>
         </AmountBox>
       )}
     </ToppingBox>

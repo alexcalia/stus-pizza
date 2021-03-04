@@ -8,6 +8,18 @@ const OrderForm = () => {
   const [address, setAddress] = useState('');
   const [toppings, setToppings] = useState(toppingsFile);
 
+  const addAmount = (index) => {
+    const copyTops = [...toppings];
+    copyTops[index].amount = copyTops[index].amount + 1;
+    setToppings(copyTops);
+  };
+
+  const removeAmount = (index) => {
+    const copyTops = [...toppings];
+    copyTops[index].amount = copyTops[index].amount - 1;
+    setToppings(copyTops);
+  };
+
   return (
     <div className="orderFormContainer">
       {toppings.map((topping, index) => (
@@ -15,6 +27,9 @@ const OrderForm = () => {
           key={`topping${index}`}
           name={topping.name}
           amount={topping.amount}
+          addAmount={addAmount}
+          removeAmount={removeAmount}
+          index={index}
         />
       ))}
     </div>
