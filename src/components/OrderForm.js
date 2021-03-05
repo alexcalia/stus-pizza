@@ -20,6 +20,16 @@ const OrderForm = () => {
     setToppings(copyTops);
   };
 
+  const selected = (index, active) => {
+    const copyTops = [...toppings];
+    if (active === false) {
+      copyTops[index].amount = 0;
+    } else {
+      copyTops[index].amount = 1;
+    }
+    setToppings(copyTops);
+  };
+
   return (
     <div className="orderFormContainer">
       {toppings.map((topping, index) => (
@@ -30,6 +40,7 @@ const OrderForm = () => {
           addAmount={addAmount}
           removeAmount={removeAmount}
           index={index}
+          selected={selected}
         />
       ))}
     </div>

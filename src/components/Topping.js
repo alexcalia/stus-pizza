@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 
 const ToppingBox = styled('div')`
   height: 100px;
-  width: ${(props) => (props.active ? '400px' : '150px')};
+  width: 150px;
   background: red;
   margin: 10px;
   font-size: 20px;
@@ -13,10 +13,22 @@ const ToppingBox = styled('div')`
 const AmountBox = styled('div')`
   display: flex;
   height: 30px;
+  justify-content: center;
 `;
 
-const Topping = ({ name, amount, addAmount, removeAmount, index }) => {
+const Topping = ({
+  name,
+  amount,
+  addAmount,
+  removeAmount,
+  index,
+  selected,
+}) => {
   const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    selected(index, active);
+  }, [active]);
 
   return (
     <ToppingBox onClick={() => setActive(!active)}>
