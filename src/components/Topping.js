@@ -22,12 +22,13 @@ const Topping = ({
   addAmount,
   removeAmount,
   index,
-  selected,
+  selectTopping,
 }) => {
   const [active, setActive] = useState(false);
 
+  // When the active state of the topping is changed, run the function to add 1/ remove toppings
   useEffect(() => {
-    selected(index, active);
+    selectTopping(index, active);
   }, [active]);
 
   return (
